@@ -1,29 +1,47 @@
-// Metto il prompt per riuscire a prendere il numero
-const myNumber = prompt("Inserisci un numero da 1 a 5")
-console.log("Il numero da te scelto è", myNumber);
+// Chiedi all'utente di scegliere pari o dispari e il numero da 0 a 5
+let bet = prompt ("Il risultato sarà pari o dispari?");
 
-for (let i = 0; i < 10; i++) {
-	
-	let numero = getRandomNumber(1, 5);
-	let risultato = pariOrDispari(numero);
-	console.log(`Il numero ${numero} è ${risultato}`);
-	
-}
+let myNumber = parseInt (prompt("Scegli un numero tra 0 e 5"));
+console.log("Hai scelto il numero: ", myNumber)
 
+// Stabilisci gli if se hai scelto il numero tra 0 e 5
 
-//La funzione pariOrDispari accetta un "numero" in ingresso, controlla se pari o dispari e restituisce una stringa in risultato
-function pariOrDispari( numero ) {
-	// console.log(numero);
-	//controllo che "numero", cioè il valore fornito sia pari o dispari
-	if( numero % 2 == 0 ) {
-		let testo = "pari";
-		return testo;
+if (myNumber <= 5) {
+	alert("Giochiamo");
+
+	let pcNumber =random();
+
+	let somma = pcNumber + myNumber;
+	console.log(myNumber, "+", pcNumber, "=", somma);
+
+	// Controlliamo se hai scelto il risultato corretto tra pari e dispari
+	if (bet == pariOrDispari(somma)) {
+		alert("Hai vinto!")
 	}
-	
-	return "dispari";
+	else {
+		alert("Hai perso!")
+	}
 }
 
-//Input: range inteso come min e max, Output: un numero casuale in quel range
-function getRandomNumber(min, max) {
-	return Math.floor(Math.random() * (max - min + 1) ) + min;
+else {
+	alert ("Inserisci un numero tra 0 e 5!")
+}
+
+// Specifichiamo la funzione che riguarda il numero scelto dal pc
+function random() {
+	let pcNumber = Math.floor(Math.random() * 5) + 1;
+	console.log("Il computer ha scelto il numero: ", pcNumber)
+	return pcNumber;
+}
+
+// Specifichiamo la funzione Pari orDispari
+function pariOrDispari(numero) {
+	let risultato = "dispari";
+
+	if (numero % 2 == 0) {
+		risultato = "pari"; 
+	}
+
+	console.log("Il risultato è: ", risultato);
+	return risultato;
 }
